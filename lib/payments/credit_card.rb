@@ -5,7 +5,7 @@ module Payments
       response = HTTParty.post(
         Payments.configuration.host + "/credit_cards/#{id}/find",
         query: { gateway: gateway, credentials: credentials, amount: amount, authorization: authorization, ip: ip, options: options },
-        headers: { 'Authorization' => "Basic #{Payments.configuration.auth_key}" }
+        basic_auth: Payments.configuration.auth
       )
       return JSON.load(response.body)
     end
@@ -14,7 +14,7 @@ module Payments
       response = HTTParty.post(
         Payments.configuration.host + '/credit_cards',
         query: { first_name: first_name, last_name: last_name, number: number, month: month, year: year, verification_value: verification_value },
-        headers: { 'Authorization' => "Basic #{Payments.configuration.auth_key}" }
+        basic_auth: Payments.configuration.auth
       )
       return JSON.load(response.body)
     end

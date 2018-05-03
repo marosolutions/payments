@@ -12,8 +12,8 @@ module Payments
     attr_accessor :host
     attr_accessor :username, :password
 
-    def auth_key
-      Base64.encode64(username + ':' + password)
+    def auth
+      {username: Payments.configuration.username, password: Payments.configuration.password}
     end
   end
 end
