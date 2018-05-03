@@ -19,7 +19,7 @@ module Payments
 
     def self.list
       response = HTTParty.get(
-        Payments.configuration.host + '/',
+        Payments.configuration.host + '/payment_gateways',
         headers: { 'Authorization' => "Basic #{Payments.configuration.auth_key}" }
       )
       return JSON.load(response.body)
