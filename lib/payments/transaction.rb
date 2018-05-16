@@ -3,7 +3,7 @@ module Payments
 
     def self.find id
       response = HTTParty.get(
-        Payments.configuration.host + '/transaction/' + id,
+        Payments.configuration.host + '/transactions/' + id,
         basic_auth: Payments.configuration.auth
       )
       return JSON.load(response.body)
