@@ -1,0 +1,9 @@
+# docker-compose run web rm -rf /myapp/tmp/pids/server.pid
+
+version: "3"
+services:
+  app:
+    build: .
+    command: /bin/bash
+    volumes:
+      - .:/app
